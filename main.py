@@ -36,5 +36,5 @@ class ConjuntosApp(App):
         return self.view
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": #1
     ConjuntosApp().run()
