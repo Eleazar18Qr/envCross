@@ -1,17 +1,33 @@
-
-class ContadorModel:
+class ConjuntosModel:
     """
-    El Modelo se encarga de los datos de la aplicación.
+    El Modelo se encarga de realizar las operaciones entre conjuntos.
     No sabe nada sobre cómo se mostrarán estos datos.
     """
-    def __init__(self):
-        self._contador = 0
 
-    @property
-    def contador(self):
-        """Devuelve el valor actual del contador."""
-        return self._contador
+    @staticmethod
+    def union(conjunto_a, conjunto_b):
+        """
+        Realiza la unión de dos conjuntos.
+        """
+        return conjunto_a | conjunto_b
 
-    def incrementar(self):
-        """Incrementa el contador en uno."""
-        self._contador += 1
+    @staticmethod
+    def interseccion(conjunto_a, conjunto_b):
+        """
+        Realiza la intersección de dos conjuntos.
+        """
+        return conjunto_a & conjunto_b
+
+    @staticmethod
+    def diferencia(conjunto_a, conjunto_b):
+        """
+        Realiza la diferencia de dos conjuntos (A - B).
+        """
+        return conjunto_a - conjunto_b
+
+    @staticmethod
+    def diferencia_simetrica(conjunto_a, conjunto_b):
+        """
+        Realiza la diferencia simétrica de dos conjuntos.
+        """
+        return conjunto_a ^ conjunto_b

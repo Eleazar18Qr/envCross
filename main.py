@@ -1,28 +1,40 @@
 # main.py
 
 from kivy.app import App
+from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 
-# Importar las clases del Modelo y el Controlador
-from model import ContadorModel
-from controller import ContadorController
+# Importar el Modelo y el Controlador
+from model import ConjuntosModel
+from controller import ConjuntosController
 
-# La clase de la Vista principal que Kivy cargará desde el archivo .kv
-class ContadorView(BoxLayout):
+
+# Vista principal que se enlaza con el archivo .kv
+class ConjuntosView(BoxLayout):
     pass
 
-class ContadorApp(App):
+
+class ConjuntosApp(App):
     """
-    Clase principal de la aplicación Kivy.
+    Clase principal de la aplicación.
+    Se encarga de inicializar el Modelo, la Vista y el Controlador.
     """
+
     def build(self):
-        # Crear las instancias de MVC
-        model = ContadorModel()
-        view = ContadorView()
-        self.controller = ContadorController(model, view)
+        # Cargar la interfaz desde el archivo .kv
+        Builder.load_file("view.kv")
 
-        # Devolver la vista principal para que Kivy la muestre
-        return view
+        # Crear la vista
+        self.view = ConjuntosView()
 
-if __name__ == '__main__':
-    ContadorApp().run()
+        # Crear el modelo
+        self.model = ConjuntosModel()
+
+        # Crear el controlador, conectando modelo y vista
+        self.controller = ConjuntosController(self.model, self.view)
+
+        return self.view
+
+
+if __name__ == "__main__":
+    ConjuntosApp().run()

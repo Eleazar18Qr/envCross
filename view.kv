@@ -1,15 +1,59 @@
-<ContadorView>:
+<ConjuntosView>:
     orientation: 'vertical'
     padding: 20
     spacing: 20
 
-    Label:
-        id: etiqueta_numero
-        text: "0"  # Texto inicial
-        font_size: '50sp'
-        halign: 'center'
+    BoxLayout:
+        orientation: 'horizontal'
+        spacing: 10
 
-    Button:
-        text: "Incrementar"
-        font_size: '30sp'
-        on_press: app.controller.manejar_incremento()
+        TextInput:
+            id: conjunto_a
+            hint_text: "Ingrese elementos del conjunto A (separados por comas)"
+            multiline: False
+
+        TextInput:
+            id: conjunto_b
+            hint_text: "Ingrese elementos del conjunto B (separados por comas)"
+            multiline: False
+
+    BoxLayout:
+        orientation: 'horizontal'
+        spacing: 10
+
+        Button:
+            text: "Unión"
+            on_press: app.controller.realizar_union()
+
+        Button:
+            text: "Intersección"
+            on_press: app.controller.realizar_interseccion()
+
+        Button:
+            text: "Diferencia"
+            on_press: app.controller.realizar_diferencia()
+
+        Button:
+            text: "Diferencia Simétrica"
+            on_press: app.controller.realizar_diferencia_simetrica()
+
+    BoxLayout:
+        orientation: 'horizontal'
+        spacing: 10
+
+        Button:
+            text: "Subconjunto"
+            on_press: app.controller.verificar_subconjunto()
+
+        Button:
+            text: "Superconjunto"
+            on_press: app.controller.verificar_superconjunto()
+
+    Label:
+        id: resultado
+        text: "Resultado: "
+        font_size: '20sp'
+        halign: 'center'
+        valign: 'middle'
+        size_hint_y: None
+        height: 50
